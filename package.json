@@ -1,24 +1,28 @@
 {
-  "name": "remix-code-coverage-example",
+  "name": "remix-monocart-coverage-example",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
+    "clean": "rimraf ./build ./node_modules/.cache .cache ./coverage/* ./e2e/test-results",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "pretest:e2e": "run-s clean \"build -- --sourcemapServer --sourcemapClient --minify=false\"",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@remix-run/node": "^2.10.3",
-    "@remix-run/react": "^2.10.3",
-    "@remix-run/serve": "^2.10.3",
+    "@remix-run/node": "^2.11.1",
+    "@remix-run/react": "^2.11.1",
+    "@remix-run/serve": "^2.1.1",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.45.3",
     "@remix-run/dev": "^2.10.3",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -31,8 +35,14 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "monocart-coverage-reports": "^2.10.4",
+    "monocart-reporter": "^2.8.0",
+    "npm-run-all": "^4.1.5",
+    "playwright": "^1.47.1",
     "postcss": "^8.4.38",
+    "rimraf": "^6.0.1",
     "tailwindcss": "^3.4.4",
+    "tiny-invariant": "^1.3.3",
     "typescript": "^5.1.6",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.2.1"

@@ -1,5 +1,18 @@
-node_modules
+.vscode/
+.DS_Store
+node_modules/
 
 /.cache
 /build
+/.nyc_output
+/coverage
+/e2e/playwright-report
+/e2e/test-results
+tsconfig.tsbuildinfo
+
+*.local.*
+
 .env
+.env.production
+.envrc
+.idea

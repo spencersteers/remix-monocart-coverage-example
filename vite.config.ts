@@ -13,4 +13,9 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  build: {
+    cssMinify: false,
+    minify: false,
+    sourcemap: true,
+  }
 });
